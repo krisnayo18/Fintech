@@ -33,6 +33,7 @@ public class FormLogin extends javax.swing.JFrame {
     public FormLogin() {
         initComponents();
         this.setSize(panelLogo.getWidth()+panelLogin.getWidth() , 520);
+        System.out.println("Ashiiap");
           
     }
 
