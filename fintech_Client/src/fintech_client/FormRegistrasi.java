@@ -28,6 +28,7 @@ public class FormRegistrasi extends javax.swing.JFrame {
      */
     public FormRegistrasi() {
         initComponents();
+        JOptionPane.showMessageDialog(null, "halo gaes");
         this.setSize(900, 500);
     }
 
