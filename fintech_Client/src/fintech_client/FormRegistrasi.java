@@ -221,7 +221,7 @@ public class FormRegistrasi extends javax.swing.JFrame {
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "Registrasi anda tidak berhasil");
+                JOptionPane.showMessageDialog(null, "Registrasi anda tidak berhasil" + jTextFieldUsername.getText() + "Sudah terdaftar");
             }
         }
        
