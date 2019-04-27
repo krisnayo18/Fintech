@@ -88,7 +88,7 @@ public class User {
             if(!connect.isClosed())
             {  
                 PreparedStatement sql = (PreparedStatement) connect.prepareStatement(
-                        "insert into user values (?,?)");
+                        "insert into user (username,password) values (?,?)");
                 sql.setString(1, getUsername());
                 sql.setString(2, getPassword());
                 sql.executeUpdate();
