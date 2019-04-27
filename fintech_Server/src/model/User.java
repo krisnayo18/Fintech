@@ -86,9 +86,7 @@ public class User {
         try {
             stat = (Statement) connect.createStatement();
             if(!connect.isClosed())
-            {
-              
-               
+            {  
                 PreparedStatement sql = (PreparedStatement) connect.prepareStatement(
                         "insert into user values (?,?)");
                 sql.setString(1, getUsername());

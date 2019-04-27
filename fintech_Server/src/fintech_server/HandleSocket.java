@@ -50,7 +50,7 @@ public class HandleSocket extends Thread{
             
             while(true)
             {
-                ArrayList<User> datas = new ArrayList<User>();
+                ArrayList<User> datas = user.display();
                 String request = chatFromClient.readLine();
                 String[] pecah = request.split("-");
                 if(pecah[0].equals("LOGIN")){

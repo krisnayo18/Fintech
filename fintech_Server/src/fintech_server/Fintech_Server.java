@@ -18,6 +18,8 @@ public class Fintech_Server extends javax.swing.JFrame {
      */
     public Fintech_Server() {
         initComponents();
+        MainServer s = new MainServer();
+
        
     }
     
@@ -311,7 +313,6 @@ public class Fintech_Server extends javax.swing.JFrame {
     private void jLabelConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelConnectMouseClicked
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this,"Server ON");
-         MainServer s = new MainServer();
          
         
     }//GEN-LAST:event_jLabelConnectMouseClicked
