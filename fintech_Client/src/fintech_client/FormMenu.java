@@ -5,6 +5,15 @@
  */
 package fintech_client;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Era
@@ -14,14 +23,20 @@ public class FormMenu extends javax.swing.JFrame {
     /**
      * Creates new form FormUtama
      */
+    String chatClient,chatServer;
+    private Socket clientSocket;
+    DataOutputStream sendToServer;
+    BufferedReader chatFromServer;
+    fintech_client akun;
     public FormMenu() {
         initComponents();
     }
     
     
-    public int bacatbk=0;
-    public int investhree = 0;
-    public int indopremium = 0;
+    
+     String bacatbk;
+     String investhree;
+     String indopremium;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,28 +47,18 @@ public class FormMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        cbBaca = new javax.swing.JCheckBox();
+        jPanelMenu = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         cbIndoPremium = new javax.swing.JCheckBox();
         cbInvesthree = new javax.swing.JCheckBox();
+        cbBaca = new javax.swing.JCheckBox();
         btnSubmit = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
-
-        cbBaca.setBackground(new java.awt.Color(102, 102, 102));
-        cbBaca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbBaca.setForeground(new java.awt.Color(255, 255, 255));
-        cbBaca.setText("PT. BACA, Tbk");
-        cbBaca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbBacaActionPerformed(evt);
-            }
-        });
+        jPanelMenu.setBackground(new java.awt.Color(102, 102, 102));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -63,21 +68,16 @@ public class FormMenu extends javax.swing.JFrame {
         cbIndoPremium.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbIndoPremium.setForeground(new java.awt.Color(255, 255, 255));
         cbIndoPremium.setText("PT. IndoPremium");
-        cbIndoPremium.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbIndoPremiumActionPerformed(evt);
-            }
-        });
 
         cbInvesthree.setBackground(new java.awt.Color(102, 102, 102));
         cbInvesthree.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbInvesthree.setForeground(new java.awt.Color(255, 255, 255));
         cbInvesthree.setText("PT. Investhree");
-        cbInvesthree.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbInvesthreeActionPerformed(evt);
-            }
-        });
+
+        cbBaca.setBackground(new java.awt.Color(102, 102, 102));
+        cbBaca.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        cbBaca.setForeground(new java.awt.Color(255, 255, 255));
+        cbBaca.setText("PT. BACA, Tbk");
 
         btnSubmit.setBackground(new java.awt.Color(255, 255, 255));
         btnSubmit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,10 +92,10 @@ public class FormMenu extends javax.swing.JFrame {
         btnSubmit.setLayout(btnSubmitLayout);
         btnSubmitLayout.setHorizontalGroup(
             btnSubmitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnSubmitLayout.createSequentialGroup()
-                .addGap(101, 101, 101)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSubmitLayout.createSequentialGroup()
+                .addContainerGap(79, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(84, 84, 84))
         );
         btnSubmitLayout.setVerticalGroup(
             btnSubmitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,113 +105,112 @@ public class FormMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
+        javax.swing.GroupLayout jPanelMenuLayout = new javax.swing.GroupLayout(jPanelMenu);
+        jPanelMenu.setLayout(jPanelMenuLayout);
+        jPanelMenuLayout.setHorizontalGroup(
+            jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMenuLayout.createSequentialGroup()
+                .addGroup(jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMenuLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbInvesthree)
-                            .addComponent(cbIndoPremium)
-                            .addComponent(cbBaca))))
-                .addContainerGap(29, Short.MAX_VALUE))
-            .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(cbIndoPremium))
+                    .addGroup(jPanelMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(cbInvesthree))
+                    .addGroup(jPanelMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(cbBaca))
+                    .addGroup(jPanelMenuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+        jPanelMenuLayout.setVerticalGroup(
+            jPanelMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMenuLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(67, 67, 67)
+                .addGap(34, 34, 34)
                 .addComponent(cbIndoPremium)
                 .addGap(18, 18, 18)
                 .addComponent(cbInvesthree)
                 .addGap(18, 18, 18)
                 .addComponent(cbBaca)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+     public void setacc(fintech_client pakun)
+    {
+        akun = pakun;
+    }
     private void btnSubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseClicked
         // TODO add your handling code here:
-        FormTampilSaham f = new FormTampilSaham();
-        f.setVisible(true);
-         if(cbBaca.isSelected()){
-            bacatbk = 1;
-        }
-        else
+        try 
         {
-            bacatbk = 0;
+            if(cbBaca.isSelected()){
+                bacatbk = "1";
+            }
+            else
+            {
+                bacatbk = "0";
+            }
+            if(cbInvesthree.isSelected()){
+                investhree = "1";
+            }
+            else
+            {
+                investhree = "0";
+            }
+            if(cbIndoPremium.isSelected()){
+                indopremium = "1";
+            }
+            else
+            {
+                indopremium = "0";
+            }
+            chatClient = "MENU-" + indopremium + "-" + investhree + "-" + bacatbk ; //ambil data untuk di kirim ke server
+            akun.sendToServer.writeBytes(chatClient + "\n"); // kirim data ke server
+            chatServer = akun.chatFromServer.readLine(); // menerima data dari server
+            String[] pecah = chatServer.split("-");
+           
+            if(pecah[0].equals("TRUE"))
+            {
+                FormTampilSaham f = new FormTampilSaham();
+                f.setVisible(true);
+                f.setPannel(pecah[1], pecah[2], pecah[3]);
+                f.setacc(akun);
+                this.setVisible(false); 
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Ada yang salah dengan server");
+            }
         }
-          if(cbInvesthree.isSelected()){
-            investhree = 1;
-        }
-        else
-        {
-            investhree = 0;
-        }
-           if(cbIndoPremium.isSelected()){
-            indopremium = 1;
-        }
-        else
-        {
-            indopremium = 0;
-        }
-        this.setVisible(false);
+         catch(IOException ex)
+         {
+             Logger.getLogger(FormLogin.class.getName()).log(Level.SEVERE, null, ex);
+         }
+       
     }//GEN-LAST:event_btnSubmitMouseClicked
-
-    private void cbIndoPremiumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbIndoPremiumActionPerformed
-        // TODO add your handling code here:
-        if(indopremium == 0){
-            indopremium = 1;
-        }
-        else
-        {
-            indopremium = 0;
-        }
-    }//GEN-LAST:event_cbIndoPremiumActionPerformed
-
-    private void cbInvesthreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbInvesthreeActionPerformed
-        // TODO add your handling code here:
-         if(investhree == 0){
-            investhree = 1;
-        }
-        else
-        {
-            investhree = 0;
-        }
-    }//GEN-LAST:event_cbInvesthreeActionPerformed
-
-    private void cbBacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBacaActionPerformed
-        // TODO add your handling code here:
-        if(bacatbk == 0){
-            bacatbk = 1;
-        }
-        else
-        {
-            bacatbk = 0;
-        }
-    }//GEN-LAST:event_cbBacaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,6 +256,6 @@ public class FormMenu extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbInvesthree;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelMenu;
     // End of variables declaration//GEN-END:variables
 }

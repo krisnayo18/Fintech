@@ -5,6 +5,15 @@
  */
 package fintech_client;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Era
@@ -14,31 +23,24 @@ public class FormTampilSaham extends javax.swing.JFrame {
     /**
      * Creates new form formUtamaSaham
      */
+    String chatClient,chatServer;
+    private Socket clientSocket;
+    DataOutputStream sendToServer;
+    BufferedReader chatFromServer;
+    fintech_client akun;
+    
+    public String bacatbk;
+    public String investhree;
+    public String indopremium;
+    
     public FormTampilSaham() {
         
         initComponents();
-        FormMenu u = new FormMenu();
-        System.out.println(u.indopremium);
         jPanelBaca.setVisible(false);
         jPanelIndo.setVisible(false);
         jPanelInvest.setVisible(false);
-        if(u.cbIndoPremium.isSelected()== true)
-        {
-            jPanelIndo.setVisible(true);
-        }
-        if(u.investhree == 1)
-        {
-            jPanelInvest.setVisible(true);
-        }
-        if(u.bacatbk == 1)
-        {
-            jPanelBaca.setVisible(true);
-        }
-        
     }
     
-        FormMenu u = new FormMenu();
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -135,7 +137,7 @@ public class FormTampilSaham extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanelIndo);
-        jPanelIndo.setBounds(390, 0, 140, 0);
+        jPanelIndo.setBounds(390, 0, 140, 480);
 
         jPanelInvest.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -193,7 +195,7 @@ public class FormTampilSaham extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanelInvest);
-        jPanelInvest.setBounds(214, 0, 150, 0);
+        jPanelInvest.setBounds(214, 0, 150, 480);
 
         jPanelBaca.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -251,7 +253,7 @@ public class FormTampilSaham extends javax.swing.JFrame {
         );
 
         jPanel1.add(jPanelBaca);
-        jPanelBaca.setBounds(550, 0, 140, 0);
+        jPanelBaca.setBounds(550, 0, 140, 480);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -266,6 +268,11 @@ public class FormTampilSaham extends javax.swing.JFrame {
         jLabel4.setBounds(50, 250, 107, 21);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+        });
 
         jLabelExit.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabelExit.setForeground(new java.awt.Color(102, 102, 102));
@@ -311,15 +318,45 @@ public class FormTampilSaham extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    public void setacc(fintech_client pakun)
+    {
+        akun = pakun;
+    }
+    public void setPannel(String pIndo, String pInvess, String pBaca)
+    {
+        if(pIndo.equals("1"))
+        {
+            jPanelIndo.setVisible(true);
+        }
+        if(pInvess.equals("1"))
+        {
+             jPanelInvest.setVisible(true);
+        }
+        if(pBaca.equals("1"))
+        {
+             jPanelBaca.setVisible(true);
+        }
+    }
+      
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        // TODO add your handling code here:
+         FormMenu r = new FormMenu();
+                r.setVisible(true);
+                r.setacc(akun);
+                this.setVisible(false);
+    }//GEN-LAST:event_jPanel5MouseClicked
 
     /**
      * @param args the command line arguments
      */
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

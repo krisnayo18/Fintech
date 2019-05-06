@@ -29,10 +29,12 @@ public class FormLogin extends javax.swing.JFrame {
     private Socket clientSocket;
     DataOutputStream sendToServer;
     BufferedReader chatFromServer;
+    fintech_client akun;
     
     public FormLogin() {
         initComponents();
         this.setSize(panelLogo.getWidth()+panelLogin.getWidth() , 520);
+        akun = new fintech_client();
     }
 
     /**
@@ -199,19 +201,18 @@ public class FormLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public void setacc(fintech_client pakun)
+    {
+        akun = pakun;
+    }
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         // TODO add your handling code here:
         try 
         {
-            //buat koneksi
-            clientSocket = new Socket("localhost",6000);
-            sendToServer = new DataOutputStream(clientSocket.getOutputStream()); // untuk mengirim pesan ke server
-            // untuk menerima pesan dari server
-            chatFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); 
             chatClient = "LOGIN-" + jTextFieldUsername.getText() + "-" + txtPass.getText(); //ambil data untuk di kirim ke server
-            sendToServer.writeBytes(chatClient + "\n"); // kirim data ke server
-            chatServer = chatFromServer.readLine(); // menerima data dari server
+            akun.sendToServer.writeBytes(chatClient + "\n"); // kirim data ke server
+            chatServer = akun.chatFromServer.readLine(); // menerima data dari server
             
             if(chatServer.equals("TRUE")) // pengecekan apabila data benar
             {
@@ -219,6 +220,7 @@ public class FormLogin extends javax.swing.JFrame {
                 // pindah ke form menu
                 FormMenu r = new FormMenu();
                 r.setVisible(true);
+                r.setacc(akun);
                 this.setVisible(false);
             }
             else
@@ -238,6 +240,7 @@ public class FormLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         FormRegistrasi r = new FormRegistrasi();
         r.setVisible(true);
+        r.setacc(akun);
         this.setVisible(false);
     }//GEN-LAST:event_labelToRegistrasiMouseClicked
 

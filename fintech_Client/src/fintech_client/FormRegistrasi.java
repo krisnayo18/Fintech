@@ -23,6 +23,8 @@ public class FormRegistrasi extends javax.swing.JFrame {
     private Socket clientSocket;
     DataOutputStream sendToServer;
     BufferedReader chatFromServer;
+    fintech_client akun;
+    
     /**
      * Creates new form UIRegister
      */
@@ -195,20 +197,18 @@ public class FormRegistrasi extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+     public void setacc(fintech_client pakun)
+    {
+        akun = pakun;
+    }
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
         // TODO add your handling code here:
         try 
         {   
-            //buat koneksi
-            clientSocket = new Socket("localhost",6000);
-            sendToServer = new DataOutputStream(clientSocket.getOutputStream()); //untuk mengirim pesan ke server
-            //  untuk menerima pesan dari server
-            chatFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); 
-            //ambil data untuk di kirim ke server
             chatClient = "REGISTRASI-" + jTextFieldUsername.getText() + "-" + txtPass.getText();
-            sendToServer.writeBytes(chatClient + "\n"); // kirim ke server
-            chatServer = chatFromServer.readLine();//terima data dari server
+            akun.sendToServer.writeBytes(chatClient + "\n"); // kirim ke server
+            chatServer = akun.chatFromServer.readLine();//terima data dari server
             
             if(chatServer.equals("SUKSES")) // pengecekan apabila registrasi benar
             {
@@ -217,6 +217,7 @@ public class FormRegistrasi extends javax.swing.JFrame {
                 //pindah ke form menu 
                 FormMenu r = new FormMenu();
                 r.setVisible(true);
+                r.setacc(akun);
                 this.setVisible(false);
             }
             else
@@ -235,6 +236,7 @@ public class FormRegistrasi extends javax.swing.JFrame {
         // TODO add your handling code here:
         FormLogin r = new FormLogin();
         r.setVisible(true);
+        r.setacc(akun);
         this.setVisible(false);
     }//GEN-LAST:event_labelToLoginMouseClicked
 

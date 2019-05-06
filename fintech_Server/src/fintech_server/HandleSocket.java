@@ -90,6 +90,13 @@ public class HandleSocket extends Thread{
                     }
                     else chatToClient.writeBytes("GAGAL"+"\n");
                 }
+                else if(pecah[0].equals("MENU"))
+                {
+                    String Indo = pecah[1];
+                    String Invess = pecah[2];
+                    String Baca = pecah[3];
+                    chatToClient.writeBytes("TRUE-" + Indo + "-" + Invess + "-" + Baca + "\n");
+                }
             }
             
         }catch(IOException ex)
