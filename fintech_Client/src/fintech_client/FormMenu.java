@@ -26,6 +26,7 @@ public class FormMenu extends javax.swing.JFrame {
     String chatClient,chatServer;
     private Socket clientSocket;
     DataOutputStream sendToServer;
+     MultiRequestSaham saham;
     BufferedReader chatFromServer;
     fintech_client akun;
     public FormMenu() {
@@ -164,9 +165,7 @@ public class FormMenu extends javax.swing.JFrame {
     }
     private void btnSubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubmitMouseClicked
         // TODO add your handling code here:
-        try 
-        {
-            if(cbBaca.isSelected()){
+         if(cbBaca.isSelected()){
                 bacatbk = "1";
             }
             else
@@ -187,18 +186,22 @@ public class FormMenu extends javax.swing.JFrame {
             {
                 indopremium = "0";
             }
+        try 
+        {
+           
             chatClient = "MENU-" + indopremium + "-" + investhree + "-" + bacatbk ; //ambil data untuk di kirim ke server
             akun.sendToServer.writeBytes(chatClient + "\n"); // kirim data ke server
             chatServer = akun.chatFromServer.readLine(); // menerima data dari server
-            String[] pecah = chatServer.split("-");
-           
-            if(pecah[0].equals("TRUE"))
+            String[] pecah = chatServer.split("-"); // split chat dari server dengan -
+            if(pecah[0].equals("TRUE")) // apabila pesan dari server TRUE
             {
-                FormTampilSaham f = new FormTampilSaham();
-                f.setVisible(true);
-                f.setPannel(pecah[1], pecah[2], pecah[3]);
-                f.setacc(akun);
-                this.setVisible(false); 
+                FormTampilSaham f = new FormTampilSaham(); // buat object formtampilsaham
+                saham = new MultiRequestSaham("Saham",akun);   
+                saham.start();
+                f.setPannel(pecah[1], pecah[2], pecah[3]); // panggil method untuk ubah pannel di formtampilsaham 
+                f.setacc(akun); // panggil method  koneksi di formtampilsaham
+                this.setVisible(false); // formmenu di close
+                f.setVisible(true); // formtampilsaham di show
             }
             else
             {

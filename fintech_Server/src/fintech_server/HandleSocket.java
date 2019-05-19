@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.User;
+import fintech_server.Fintech_Server;
 
 public class HandleSocket extends Thread{
     MainServer parent;
@@ -24,15 +25,20 @@ public class HandleSocket extends Thread{
     BufferedReader chatFromClient;
     DataOutputStream chatToClient;
     User user = new User();
-    
     MainServer server;
     Connection connect;
     Socket clientSocket;
     String nama;
+
+    
+    int USD = 4;
+    int Euro = 5;
+    int Pounds = 2;
+    int Baca = 2;
    
     public HandleSocket(MainServer pMs, Socket pS, String pNama)
     {
-        
+       
         connect = user.getConnection();
         this.server = pMs;
         this.clientSocket = pS;
@@ -95,7 +101,16 @@ public class HandleSocket extends Thread{
                     String Indo = pecah[1];
                     String Invess = pecah[2];
                     String Baca = pecah[3];
-                    chatToClient.writeBytes("TRUE-" + Indo + "-" + Invess + "-" + Baca + "\n");
+                    chatToClient.writeBytes("TRUE-" + Indo + "-" + Invess + "-" + Baca +"\n");
+                    
+                }
+                else if(request.contains("Saham"))
+                {
+                    USD++;
+                    Euro++;
+                    Pounds++;
+                    Baca++;
+                    chatToClient.writeBytes("berhasil-" + USD + "-" + Euro + "-" + Pounds  + "-" + Baca + "\n" );
                 }
             }
             

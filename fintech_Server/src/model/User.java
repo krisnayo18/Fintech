@@ -5,6 +5,7 @@
  */
 package model;
 import com.mysql.jdbc.*;
+import java.awt.List;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,6 +23,7 @@ public class User {
     //<editor-fold defaultstate="collapsed" desc="Data Member">
     private String username;
     private String password;
+    
     
     Connection connect;
     Statement stat;
@@ -132,7 +134,7 @@ public class User {
             }
             if(pw.equals(this.password))
             {
-                System.out.println("Login anda berhasil" +  this.username + " Gimana rasanya");
+                System.out.println("Login anda berhasil " +  this.username + " Gimana rasanya");
                 hasil = "1";
             }
             
@@ -143,6 +145,8 @@ public class User {
         }
         return hasil;
     }
+    
+    
 //</editor-fold>
     
 }

@@ -5,8 +5,10 @@
  */
 package fintech_server;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
-
+import model.User;
 /**
  *
  * @author Era
@@ -16,13 +18,11 @@ public class Fintech_Server extends javax.swing.JFrame {
     /**
      * Creates new form ui_server
      */
+     MainServer Server;
+   
     public Fintech_Server() {
         initComponents();
-        MainServer s = new MainServer();
-
-       
     }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,14 +53,11 @@ public class Fintech_Server extends javax.swing.JFrame {
         jTextFieldBacaPounds = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanelDisconnect = new javax.swing.JPanel();
-        jLabelDisconnect = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabelSave = new javax.swing.JLabel();
-        jPanelConnect = new javax.swing.JPanel();
-        jLabelConnect = new javax.swing.JLabel();
+        jButtonDisconnect = new javax.swing.JButton();
+        jButtonSave = new javax.swing.JButton();
+        jButtonConnect = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -200,27 +197,6 @@ public class Fintech_Server extends javax.swing.JFrame {
         jPanel1.add(jLabel4);
         jLabel4.setBounds(50, 250, 107, 21);
 
-        jPanelDisconnect.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelDisconnect.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanelDisconnectMouseClicked(evt);
-            }
-        });
-        jPanelDisconnect.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelDisconnect.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabelDisconnect.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelDisconnect.setText("Disconnect");
-        jLabelDisconnect.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelDisconnectMouseClicked(evt);
-            }
-        });
-        jPanelDisconnect.add(jLabelDisconnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
-
-        jPanel1.add(jPanelDisconnect);
-        jPanelDisconnect.setBounds(110, 10, 90, 40);
-
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("IHSG");
@@ -233,52 +209,41 @@ public class Fintech_Server extends javax.swing.JFrame {
         jPanel1.add(jLabel6);
         jLabel6.setBounds(50, 110, 77, 21);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabelSave.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabelSave.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelSave.setText("SAVE");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jLabelSave)
-                .addContainerGap(82, Short.MAX_VALUE))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelSave, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel6);
-        jPanel6.setBounds(10, 420, 190, 40);
-
-        jPanelConnect.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelConnect.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanelConnectMouseClicked(evt);
+        jButtonDisconnect.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonDisconnect.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonDisconnect.setForeground(new java.awt.Color(102, 102, 102));
+        jButtonDisconnect.setText("Disconnect");
+        jButtonDisconnect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDisconnectActionPerformed(evt);
             }
         });
-        jPanelConnect.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jButtonDisconnect);
+        jButtonDisconnect.setBounds(10, 50, 190, 30);
 
-        jLabelConnect.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabelConnect.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelConnect.setText("Connect");
-        jLabelConnect.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelConnectMouseClicked(evt);
+        jButtonSave.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonSave.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonSave.setForeground(new java.awt.Color(102, 102, 102));
+        jButtonSave.setText("SAVE");
+        jButtonSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveActionPerformed(evt);
             }
         });
-        jPanelConnect.add(jLabelConnect, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 11, -1, -1));
+        jPanel1.add(jButtonSave);
+        jButtonSave.setBounds(10, 420, 190, 40);
 
-        jPanel1.add(jPanelConnect);
-        jPanelConnect.setBounds(10, 10, 90, 40);
+        jButtonConnect.setBackground(new java.awt.Color(255, 255, 255));
+        jButtonConnect.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jButtonConnect.setForeground(new java.awt.Color(102, 102, 102));
+        jButtonConnect.setText("Connect");
+        jButtonConnect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConnectActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonConnect);
+        jButtonConnect.setBounds(10, 10, 190, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -294,28 +259,42 @@ public class Fintech_Server extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanelConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelConnectMouseClicked
-        // TODO add your handling code here:
-        
-        
-    }//GEN-LAST:event_jPanelConnectMouseClicked
+    private void jButtonDisconnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDisconnectActionPerformed
+        try {
+           Server = new MainServer();
+            Server.shutdown();
+        } catch (IOException e) {
+        }
+    }//GEN-LAST:event_jButtonDisconnectActionPerformed
 
-    private void jPanelDisconnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelDisconnectMouseClicked
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jPanelDisconnectMouseClicked
-
-    private void jLabelDisconnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelDisconnectMouseClicked
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jLabelDisconnectMouseClicked
-
-    private void jLabelConnectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelConnectMouseClicked
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this,"Server ON");
-         
+        User user = new User();
+        int invessUSD = Integer.parseInt(jTextFieldInvesUsd.getText());
+        int invessEURO = Integer.parseInt(jTextFieldInvesEuro.getText());
+        int invessPOUNDS = Integer.parseInt(jTextFieldInvesPounds.getText());
+        int invessIHSG = Integer.parseInt(jTextFieldInvesIhsg.getText());
         
-    }//GEN-LAST:event_jLabelConnectMouseClicked
+        int indoUSD = Integer.parseInt(jTextFieldIndoUsd.getText());
+        int indoEURO = Integer.parseInt(jTextFieldIndoEuro.getText());
+        int indoPOUNDS = Integer.parseInt(jTextFieldIndoPounds.getText());
+        int indoIHSG = Integer.parseInt(jTextFieldIndoIhsg.getText());
+        
+        int bacaUSD = Integer.parseInt(jTextFieldBacaUsd.getText());
+        int bacaEURO = Integer.parseInt(jTextFieldBacaEuro.getText());
+        int bacaPOUNDS = Integer.parseInt(jTextFieldBacaPounds.getText());
+        int bacaIHSG = Integer.parseInt(jTextFieldBacaIhsg.getText());
+                
+    }//GEN-LAST:event_jButtonSaveActionPerformed
+
+    private void jButtonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectActionPerformed
+        // TODO add your handling code here:
+         try {
+           Server = new MainServer();
+           Server.Active();
+        } catch (IOException e) {
+        }
+    }//GEN-LAST:event_jButtonConnectActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,6 +333,9 @@ public class Fintech_Server extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonConnect;
+    private javax.swing.JButton jButtonDisconnect;
+    private javax.swing.JButton jButtonSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -361,14 +343,8 @@ public class Fintech_Server extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabelConnect;
-    private javax.swing.JLabel jLabelDisconnect;
-    private javax.swing.JLabel jLabelSave;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanelBaca;
-    private javax.swing.JPanel jPanelConnect;
-    private javax.swing.JPanel jPanelDisconnect;
     private javax.swing.JPanel jPanelIndo;
     private javax.swing.JPanel jPanelInvest;
     private javax.swing.JTextField jTextFieldBacaEuro;

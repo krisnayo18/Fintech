@@ -180,7 +180,7 @@ public class FormLogin extends javax.swing.JFrame {
         jTextFieldUsername.setBackground(new java.awt.Color(102, 102, 102));
         jTextFieldUsername.setFont(new java.awt.Font("Roboto Thin", 0, 15)); // NOI18N
         jTextFieldUsername.setForeground(new java.awt.Color(255, 255, 255));
-        jTextFieldUsername.setText("Masukan Nama Disini");
+        jTextFieldUsername.setText("krisna");
         jTextFieldUsername.setBorder(null);
         panelLogin.add(jTextFieldUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 350, 20));
         panelLogin.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 350, 20));
@@ -193,7 +193,7 @@ public class FormLogin extends javax.swing.JFrame {
         txtPass.setBackground(new java.awt.Color(102, 102, 102));
         txtPass.setFont(new java.awt.Font("Roboto Thin", 0, 15)); // NOI18N
         txtPass.setForeground(new java.awt.Color(255, 255, 255));
-        txtPass.setText("Masukan Pass Disini");
+        txtPass.setText("s4");
         txtPass.setBorder(null);
         panelLogin.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 350, 20));
 

@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author Era
@@ -28,18 +29,17 @@ public class FormTampilSaham extends javax.swing.JFrame {
     DataOutputStream sendToServer;
     BufferedReader chatFromServer;
     fintech_client akun;
-    
-    public String bacatbk;
-    public String investhree;
-    public String indopremium;
-    
+   
+   
+    public String hasil="";
     public FormTampilSaham() {
         
         initComponents();
         jPanelBaca.setVisible(false);
         jPanelIndo.setVisible(false);
-        jPanelInvest.setVisible(false);
+        jPanelInvest.setVisible(true);
     }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -156,6 +156,7 @@ public class FormTampilSaham extends javax.swing.JFrame {
         jLabelInvesUsd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelInvesUsd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelInvesUsd.setText("?");
+        jLabelInvesUsd.setToolTipText("");
 
         jLabelInvesPounds.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelInvesPounds.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -193,6 +194,8 @@ public class FormTampilSaham extends javax.swing.JFrame {
                 .addComponent(jLabelInvesIhsg, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(134, Short.MAX_VALUE))
         );
+
+        jLabelInvesUsd.getAccessibleContext().setAccessibleName("5");
 
         jPanel1.add(jPanelInvest);
         jPanelInvest.setBounds(214, 0, 150, 480);
@@ -343,9 +346,37 @@ public class FormTampilSaham extends javax.swing.JFrame {
              jPanelBaca.setVisible(true);
         }
     }
+    public void TampilkanSahamInvess(String pUsd, String pEuro, String pPounds, String pIhsg )
+    {
+      
+      jLabelInvesUsd.setText(pUsd);
+      jLabelInvesEuro.setText(pEuro);
+      jLabelInvesPounds.setText(pPounds);
+      jLabelInvesIhsg.setText(pIhsg);
+     System.out.println(pUsd);
+    
+    }
+    public void TampilkanSahamIndo(String pUsd, String pEuro, String pPounds, String pIhsg )
+    {
+      jLabelIndoPremiumUsd.setText(pUsd);
+      jLabelIndoPremiumEuro.setText(pEuro);
+      jLabelIndoPremiumPounds.setText(pPounds);
+      jLabelIndoPremiumIhsg.setText(pIhsg);
+
+    }
+   public void TampilkanSahamBaca(String pUsd, String pEuro, String pPounds, String pIhsg )
+    {
+      jLabelBacaUsd.setText(pUsd);
+      jLabelBacaEuro.setText(pEuro);
+      jLabelBacaPounds.setText(pPounds);
+      jLabelBacaIhsg.setText(pIhsg);
+
+    }
       
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
         // TODO add your handling code here:
+        MultiRequestSaham m = new MultiRequestSaham();
+        m.Close();
          FormMenu r = new FormMenu();
                 r.setVisible(true);
                 r.setacc(akun);
@@ -398,23 +429,25 @@ public class FormTampilSaham extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabelBacaEuro;
-    private javax.swing.JLabel jLabelBacaIhsg;
-    private javax.swing.JLabel jLabelBacaPounds;
-    private javax.swing.JLabel jLabelBacaUsd;
+    public javax.swing.JLabel jLabelBacaEuro;
+    public javax.swing.JLabel jLabelBacaIhsg;
+    public javax.swing.JLabel jLabelBacaPounds;
+    public javax.swing.JLabel jLabelBacaUsd;
     private javax.swing.JLabel jLabelExit;
-    private javax.swing.JLabel jLabelIndoPremiumEuro;
-    private javax.swing.JLabel jLabelIndoPremiumIhsg;
-    private javax.swing.JLabel jLabelIndoPremiumPounds;
-    private javax.swing.JLabel jLabelIndoPremiumUsd;
-    private javax.swing.JLabel jLabelInvesEuro;
-    private javax.swing.JLabel jLabelInvesIhsg;
-    private javax.swing.JLabel jLabelInvesPounds;
-    private javax.swing.JLabel jLabelInvesUsd;
+    public javax.swing.JLabel jLabelIndoPremiumEuro;
+    public javax.swing.JLabel jLabelIndoPremiumIhsg;
+    public javax.swing.JLabel jLabelIndoPremiumPounds;
+    public javax.swing.JLabel jLabelIndoPremiumUsd;
+    public javax.swing.JLabel jLabelInvesEuro;
+    public javax.swing.JLabel jLabelInvesIhsg;
+    public javax.swing.JLabel jLabelInvesPounds;
+    public static javax.swing.JLabel jLabelInvesUsd;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanelBaca;
-    private javax.swing.JPanel jPanelIndo;
-    private javax.swing.JPanel jPanelInvest;
+    public javax.swing.JPanel jPanelBaca;
+    public javax.swing.JPanel jPanelIndo;
+    public javax.swing.JPanel jPanelInvest;
     // End of variables declaration//GEN-END:variables
+
+   
 }

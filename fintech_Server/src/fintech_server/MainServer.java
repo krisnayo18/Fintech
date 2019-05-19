@@ -19,27 +19,35 @@ import model.User;
  * @author Era
  */
 public class MainServer {
+    private boolean  serverOn = true;
     ArrayList<HandleSocket> clients;
   
-    public MainServer(){
+    public MainServer() throws IOException
+    {
         
         try{
             ServerSocket ss =  new ServerSocket(6000);
             Socket s;
             clients = new ArrayList<>();
-            while(true)
+            while(serverOn)
             {
-                
                 s = ss.accept();
                 HandleSocket hs = new HandleSocket(this, s, "Thread");
                 clients.add(hs);
-                hs.start();
-                
+                hs.start();   
             }
         }catch(IOException ex)
         {
              System.out.println("Ms");
              Logger.getLogger(MainServer.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    public void shutdown()
+    {
+        this.serverOn = false;
+    }
+    public void Active()
+    {
+        this.serverOn = true;
     }
 }
