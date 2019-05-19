@@ -30,8 +30,8 @@ public class FormRegistrasi extends javax.swing.JFrame {
      */
     public FormRegistrasi() {
         initComponents();
-        JOptionPane.showMessageDialog(null, "halo gaes");
-        this.setSize(900, 500);
+        
+        
     }
 
     /**
@@ -59,8 +59,10 @@ public class FormRegistrasi extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         txtPass = new javax.swing.JTextField();
+        jLabelLogout = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(null);
 
         panelLogo.setBackground(new java.awt.Color(102, 255, 255));
@@ -131,7 +133,7 @@ public class FormRegistrasi extends javax.swing.JFrame {
                 labelToLoginMouseClicked(evt);
             }
         });
-        panelLogin.add(labelToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, 140, 30));
+        panelLogin.add(labelToLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 140, 30));
 
         btnLogin.setBackground(new java.awt.Color(255, 255, 255));
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,7 +157,7 @@ public class FormRegistrasi extends javax.swing.JFrame {
         btnLoginLayout.setHorizontalGroup(
             btnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnLoginLayout.createSequentialGroup()
-                .addContainerGap(109, Short.MAX_VALUE)
+                .addContainerGap(104, Short.MAX_VALUE)
                 .addComponent(jLabelRegister)
                 .addGap(101, 101, 101))
         );
@@ -164,38 +166,50 @@ public class FormRegistrasi extends javax.swing.JFrame {
             .addComponent(jLabelRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        panelLogin.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 280, -1));
-        panelLogin.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 280, 20));
+        panelLogin.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 330, 280, -1));
+        panelLogin.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 360, 20));
 
         jLabel2.setFont(new java.awt.Font("Roboto Thin", 1, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("NEW PASSWORD");
-        panelLogin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
+        panelLogin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
 
         jTextFieldUsername.setBackground(new java.awt.Color(102, 102, 102));
         jTextFieldUsername.setFont(new java.awt.Font("Roboto Thin", 0, 15)); // NOI18N
         jTextFieldUsername.setForeground(new java.awt.Color(255, 255, 255));
         jTextFieldUsername.setText("Masukan Nama Disini");
         jTextFieldUsername.setBorder(null);
-        panelLogin.add(jTextFieldUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 280, 20));
-        panelLogin.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 280, 20));
+        panelLogin.add(jTextFieldUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 280, 20));
+        panelLogin.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 360, 20));
 
         jLabel4.setFont(new java.awt.Font("Roboto Thin", 1, 15)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("NEW USERNAME");
-        panelLogin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, -1, -1));
+        panelLogin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         txtPass.setBackground(new java.awt.Color(102, 102, 102));
         txtPass.setFont(new java.awt.Font("Roboto Thin", 0, 15)); // NOI18N
         txtPass.setForeground(new java.awt.Color(255, 255, 255));
         txtPass.setText("Masukan Pass Disini");
         txtPass.setBorder(null);
-        panelLogin.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 280, 20));
+        panelLogin.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 280, 20));
+
+        jLabelLogout.setFont(new java.awt.Font("Roboto Thin", 1, 18)); // NOI18N
+        jLabelLogout.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelLogout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLogout.setText("X");
+        jLabelLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelLogoutMouseClicked(evt);
+            }
+        });
+        panelLogin.add(jLabelLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 30, 30));
 
         getContentPane().add(panelLogin);
-        panelLogin.setBounds(398, 0, 510, 480);
+        panelLogin.setBounds(398, 0, 500, 480);
 
-        pack();
+        setSize(new java.awt.Dimension(898, 479));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
      public void setacc(fintech_client pakun)
@@ -245,6 +259,11 @@ public class FormRegistrasi extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabelRegisterMouseClicked
 
+    private void jLabelLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLogoutMouseClicked
+        // TODO add your handling code here:
+         System.exit(0);
+    }//GEN-LAST:event_jLabelLogoutMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -288,6 +307,7 @@ public class FormRegistrasi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabelLogout;
     private javax.swing.JLabel jLabelRegister;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

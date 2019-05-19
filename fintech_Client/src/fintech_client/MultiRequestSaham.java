@@ -38,21 +38,35 @@ public class MultiRequestSaham  extends  Thread {
         while(server == true)   
         {
             try
-            {
+            {                 
                  akun.sendToServer.writeBytes(requestToServer + "\n");
                  String Accept = akun.chatFromServer.readLine();
                  String[] pecah = Accept.split("-");
-                 String USD = pecah[1];
-                 String Euro = pecah[2].toString();
-                 String Pounds = pecah[3].toString();
-                 String Ihsg = pecah[4].toString();
-                         
+                 String badanUsaha = pecah[1];    
+                 String USD = pecah[2];
+                 String Euro = pecah[3];
+                 String Pounds = pecah[4];
+                 String Ihsg = pecah[5];
+                 FormTampilSaham fm = new FormTampilSaham();
+                 
                  if(pecah[0].equals("berhasil"))
                  {
-                     FormTampilSaham fm = new FormTampilSaham();         
-                     fm.TampilkanSahamInvess(USD,Euro,Pounds,Ihsg);                     
+                     if(badanUsaha.equals("Investhree"))
+                     {
+                        fm.TampilkanSahamInvess(USD,Euro,Pounds,Ihsg); 
+                     }
+                     if(badanUsaha.equals("IndoPremium"))
+                     {
+                         fm.TampilkanSahamIndo(USD,Euro,Pounds,Ihsg);  
+                     }
+                     if(badanUsaha.equals("Baca"))
+                     {
+                         fm.TampilkanSahamBaca(USD,Euro,Pounds,Ihsg);  
+                     }
+                                        
                  }
-                 Thread.sleep(1000);
+                 
+                 Thread.sleep(5000);
             }
             catch(Exception ex)
             {

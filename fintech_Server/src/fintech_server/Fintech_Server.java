@@ -270,21 +270,22 @@ public class Fintech_Server extends javax.swing.JFrame {
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
         // TODO add your handling code here:
         User user = new User();
-        int invessUSD = Integer.parseInt(jTextFieldInvesUsd.getText());
-        int invessEURO = Integer.parseInt(jTextFieldInvesEuro.getText());
-        int invessPOUNDS = Integer.parseInt(jTextFieldInvesPounds.getText());
-        int invessIHSG = Integer.parseInt(jTextFieldInvesIhsg.getText());
-        
-        int indoUSD = Integer.parseInt(jTextFieldIndoUsd.getText());
-        int indoEURO = Integer.parseInt(jTextFieldIndoEuro.getText());
-        int indoPOUNDS = Integer.parseInt(jTextFieldIndoPounds.getText());
-        int indoIHSG = Integer.parseInt(jTextFieldIndoIhsg.getText());
-        
-        int bacaUSD = Integer.parseInt(jTextFieldBacaUsd.getText());
-        int bacaEURO = Integer.parseInt(jTextFieldBacaEuro.getText());
-        int bacaPOUNDS = Integer.parseInt(jTextFieldBacaPounds.getText());
-        int bacaIHSG = Integer.parseInt(jTextFieldBacaIhsg.getText());
-                
+        double invessUSD = Double.parseDouble(jTextFieldInvesUsd.getText());
+        double invessEURO = Double.parseDouble(jTextFieldInvesEuro.getText());
+        double invessPOUNDS = Double.parseDouble(jTextFieldInvesPounds.getText());
+        double invessIHSG = Double.parseDouble(jTextFieldInvesIhsg.getText());
+        user.insertSaham("Investhree", invessUSD , invessEURO, invessPOUNDS, invessIHSG);
+        double indoUSD = Double.parseDouble(jTextFieldIndoUsd.getText());
+        double indoEURO = Double.parseDouble(jTextFieldIndoEuro.getText());
+        double indoPOUNDS = Double.parseDouble(jTextFieldIndoPounds.getText());
+        double indoIHSG = Double.parseDouble(jTextFieldIndoIhsg.getText());
+        user.insertSaham("IndoPremium", indoUSD , indoEURO, indoPOUNDS, indoIHSG);
+        double bacaUSD = Double.parseDouble(jTextFieldBacaUsd.getText());
+        double bacaEURO = Double.parseDouble(jTextFieldBacaEuro.getText());
+        double bacaPOUNDS = Double.parseDouble(jTextFieldBacaPounds.getText());
+        double bacaIHSG = Double.parseDouble(jTextFieldBacaIhsg.getText());
+        user.insertSaham("Baca", bacaUSD , bacaEURO, bacaPOUNDS, bacaIHSG);   
+        JOptionPane.showMessageDialog(null,"berhasil melakukan input");
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConnectActionPerformed

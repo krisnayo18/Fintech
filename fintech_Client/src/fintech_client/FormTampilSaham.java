@@ -63,6 +63,7 @@ public class FormTampilSaham extends javax.swing.JFrame {
         jLabelInvesIhsg = new javax.swing.JLabel();
         jLabelInvesUsd = new javax.swing.JLabel();
         jLabelInvesPounds = new javax.swing.JLabel();
+        jTextFieldcoba = new javax.swing.JTextField();
         jPanelBaca = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabelBacaUsd = new javax.swing.JLabel();
@@ -71,12 +72,13 @@ public class FormTampilSaham extends javax.swing.JFrame {
         jLabelBacaIhsg = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        jPanelExit = new javax.swing.JPanel();
         jLabelExit = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setLayout(null);
@@ -178,6 +180,10 @@ public class FormTampilSaham extends javax.swing.JFrame {
                     .addComponent(jLabelInvesPounds, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelInvesUsd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanelInvestLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jTextFieldcoba, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelInvestLayout.setVerticalGroup(
             jPanelInvestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +198,9 @@ public class FormTampilSaham extends javax.swing.JFrame {
                 .addComponent(jLabelInvesPounds, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addComponent(jLabelInvesIhsg, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jTextFieldcoba, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(69, Short.MAX_VALUE))
         );
 
         jLabelInvesUsd.getAccessibleContext().setAccessibleName("5");
@@ -270,10 +278,10 @@ public class FormTampilSaham extends javax.swing.JFrame {
         jPanel1.add(jLabel4);
         jLabel4.setBounds(50, 250, 107, 21);
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanelExit.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanel5MouseClicked(evt);
+                jPanelExitMouseClicked(evt);
             }
         });
 
@@ -281,25 +289,25 @@ public class FormTampilSaham extends javax.swing.JFrame {
         jLabelExit.setForeground(new java.awt.Color(102, 102, 102));
         jLabelExit.setText("EXIT");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelExitLayout = new javax.swing.GroupLayout(jPanelExit);
+        jPanelExit.setLayout(jPanelExitLayout);
+        jPanelExitLayout.setHorizontalGroup(
+            jPanelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelExitLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addComponent(jLabelExit)
                 .addContainerGap(88, Short.MAX_VALUE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        jPanelExitLayout.setVerticalGroup(
+            jPanelExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelExitLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelExit, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel5);
-        jPanel5.setBounds(10, 420, 190, 40);
+        jPanel1.add(jPanelExit);
+        jPanelExit.setBounds(10, 420, 190, 40);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -317,14 +325,15 @@ public class FormTampilSaham extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 712, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
     public void setacc(fintech_client pakun)
@@ -348,13 +357,17 @@ public class FormTampilSaham extends javax.swing.JFrame {
     }
     public void TampilkanSahamInvess(String pUsd, String pEuro, String pPounds, String pIhsg )
     {
-      
-      jLabelInvesUsd.setText(pUsd);
-      jLabelInvesEuro.setText(pEuro);
-      jLabelInvesPounds.setText(pPounds);
-      jLabelInvesIhsg.setText(pIhsg);
-     System.out.println(pUsd);
-    
+        
+        jLabelInvesUsd.setText(pUsd);
+        jLabelInvesEuro.setText(pEuro);
+        jLabelInvesPounds.setText(pPounds);
+        jLabelInvesIhsg.setText(pIhsg);
+        jTextFieldcoba.setText(pUsd);
+        System.out.println("Inves USD : " + pUsd);
+        System.out.println("Inves Pounds  : " + pPounds);
+        System.out.println("Inves Euro : " + pEuro);
+        System.out.println("Inves Ihsg : " + pIhsg);
+        System.out.println("");
     }
     public void TampilkanSahamIndo(String pUsd, String pEuro, String pPounds, String pIhsg )
     {
@@ -362,7 +375,11 @@ public class FormTampilSaham extends javax.swing.JFrame {
       jLabelIndoPremiumEuro.setText(pEuro);
       jLabelIndoPremiumPounds.setText(pPounds);
       jLabelIndoPremiumIhsg.setText(pIhsg);
-
+//      System.out.println("Indo USD : " + pUsd);
+//      System.out.println("Indo Pounds  : " + pPounds);
+//      System.out.println("Indo Euro : " + pEuro);
+//      System.out.println("Indo Ihsg : " + pIhsg);
+//      System.out.println("");
     }
    public void TampilkanSahamBaca(String pUsd, String pEuro, String pPounds, String pIhsg )
     {
@@ -370,18 +387,21 @@ public class FormTampilSaham extends javax.swing.JFrame {
       jLabelBacaEuro.setText(pEuro);
       jLabelBacaPounds.setText(pPounds);
       jLabelBacaIhsg.setText(pIhsg);
-
+//      System.out.println("Baca USD : " + pUsd);
+//      System.out.println("Baca Pounds  : " + pPounds);
+//      System.out.println("Baca Euro : " + pEuro);
+//      System.out.println("Baca Ihsg : " + pIhsg);
+//      System.out.println("");
     }
       
-    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+    private void jPanelExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelExitMouseClicked
         // TODO add your handling code here:
-        MultiRequestSaham m = new MultiRequestSaham();
-        m.Close();
-         FormMenu r = new FormMenu();
-                r.setVisible(true);
-                r.setacc(akun);
-                this.setVisible(false);
-    }//GEN-LAST:event_jPanel5MouseClicked
+        System.exit(0);
+//        FormMenu r = new FormMenu();
+//        r.setVisible(true);
+//        r.setacc(akun);
+//        this.setVisible(false);
+    }//GEN-LAST:event_jPanelExitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -441,12 +461,13 @@ public class FormTampilSaham extends javax.swing.JFrame {
     public javax.swing.JLabel jLabelInvesEuro;
     public javax.swing.JLabel jLabelInvesIhsg;
     public javax.swing.JLabel jLabelInvesPounds;
-    public static javax.swing.JLabel jLabelInvesUsd;
+    public javax.swing.JLabel jLabelInvesUsd;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel5;
     public javax.swing.JPanel jPanelBaca;
+    private javax.swing.JPanel jPanelExit;
     public javax.swing.JPanel jPanelIndo;
     public javax.swing.JPanel jPanelInvest;
+    public javax.swing.JTextField jTextFieldcoba;
     // End of variables declaration//GEN-END:variables
 
    

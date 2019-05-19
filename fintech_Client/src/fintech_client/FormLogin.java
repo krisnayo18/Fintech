@@ -33,7 +33,7 @@ public class FormLogin extends javax.swing.JFrame {
     
     public FormLogin() {
         initComponents();
-        this.setSize(panelLogo.getWidth()+panelLogin.getWidth() , 520);
+        
         akun = new fintech_client();
     }
 
@@ -62,12 +62,14 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextFieldUsername = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
+        jLabelLogout = new javax.swing.JLabel();
         txtPass = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -109,7 +111,7 @@ public class FormLogin extends javax.swing.JFrame {
                         .addGroup(panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6))))
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         panelLogoLayout.setVerticalGroup(
             panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +129,7 @@ public class FormLogin extends javax.swing.JFrame {
                 .addContainerGap(73, Short.MAX_VALUE))
         );
 
-        jPanel1.add(panelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 480));
+        jPanel1.add(panelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 480));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -185,10 +187,16 @@ public class FormLogin extends javax.swing.JFrame {
         panelLogin.add(jTextFieldUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 350, 20));
         panelLogin.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 350, 20));
 
-        jLabel4.setFont(new java.awt.Font("Roboto Thin", 1, 15)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("USERNAME");
-        panelLogin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+        jLabelLogout.setFont(new java.awt.Font("Roboto Thin", 1, 18)); // NOI18N
+        jLabelLogout.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelLogout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelLogout.setText("X");
+        jLabelLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelLogoutMouseClicked(evt);
+            }
+        });
+        panelLogin.add(jLabelLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 0, 30, 30));
 
         txtPass.setBackground(new java.awt.Color(102, 102, 102));
         txtPass.setFont(new java.awt.Font("Roboto Thin", 0, 15)); // NOI18N
@@ -197,9 +205,15 @@ public class FormLogin extends javax.swing.JFrame {
         txtPass.setBorder(null);
         panelLogin.add(txtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 350, 20));
 
-        getContentPane().add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 490, 480));
+        jLabel7.setFont(new java.awt.Font("Roboto Thin", 1, 15)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("USERNAME");
+        panelLogin.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+
+        getContentPane().add(panelLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 500, 480));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
     public void setacc(fintech_client pakun)
@@ -243,6 +257,11 @@ public class FormLogin extends javax.swing.JFrame {
         r.setacc(akun);
         this.setVisible(false);
     }//GEN-LAST:event_labelToRegistrasiMouseClicked
+
+    private void jLabelLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelLogoutMouseClicked
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jLabelLogoutMouseClicked
 
     /**
      * @param args the command line arguments
@@ -288,9 +307,10 @@ public class FormLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelLogout;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
